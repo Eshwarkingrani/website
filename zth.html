@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero to Hero Tech - Book by Eshwer Kingrani</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Eshwarkingrani/website/refs/heads/main/Gemini_Gener2ated_Image1_hso5ifhso5ifhso5.png">
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+    
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 25%, #6366f1 50%, #8b5cf6 75%, #a855f7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .gradient-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .fade-in {
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(60px) scale(0.95);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .slide-up {
+      animation: slideUpScale 1s ease-out;
+    }
+    
+    @keyframes slideUpScale {
+      from { 
+        opacity: 0; 
+        transform: translateY(80px) scale(0.8) rotateY(15deg);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1) rotateY(0deg);
+      }
+    }
+    
+    .book-shadow {
+      box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.4),
+        0 15px 40px rgba(139, 92, 246, 0.3),
+        0 5px 20px rgba(168, 85, 247, 0.2);
+      transition: all 0.4s ease;
+    }
+    
+    .book-shadow:hover {
+      transform: translateY(-10px) rotateY(-5deg) rotateX(5deg);
+      box-shadow: 
+        0 35px 100px rgba(0, 0, 0, 0.5),
+        0 25px 60px rgba(139, 92, 246, 0.4),
+        0 10px 30px rgba(168, 85, 247, 0.3);
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-hover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .card-hover:hover::before {
+      left: 100%;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pulse-animation {
+      animation: pulseGlow 2s infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { 
+        opacity: 1; 
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+      }
+      50% { 
+        opacity: 0.8; 
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+      }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .text-glow {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    
+    .premium-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 500px;
+      width: 95%;
+      margin: 10px;
+      animation: slideUp 0.3s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    @media (min-width: 640px) {
+      .modal-content {
+        padding: 32px;
+        width: 90%;
+        margin: 20px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="bg-gray-50"><!-- Hero Section -->
+  <section class="gradient-bg text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+   <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+     <div class="fade-in text-center md:text-left">
+      <h1 id="book-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-glow">Zero to Hero Tech</h1>
+      <p id="author-name" class="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 opacity-90 font-semibold">by Eshwer Kingrani</p>
+      <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 leading-relaxed opacity-95">Transform your tech knowledge from beginner to expert.</p>
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start"><a href="#pricing" class="glass-effect text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-700 transition-all duration-300 transform hover:scale-105 text-center"> 📘 Get Your Copy Now! </a> <a href="#about" class="border-2 border-white text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-700 transition-all duration-300 transform hover:scale-105 text-center"> Learn More </a>
+      </div>
+     </div>
+     <div class="slide-up flex justify-center mt-8 md:mt-0">
+      <div class="book-shadow rounded-2xl overflow-hidden floating w-full max-w-xs sm:max-w-sm"><img src="https://raw.githubusercontent.com/Eshwarkingrani/website/refs/heads/main/Gemini_Gener2ated_Image1_hso5ifhso5ifhso5.png" alt="Zero to Hero Tech Book Cover" class="w-full h-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+       <div class="bg-white p-6 sm:p-8" style="display: none;">
+        <svg viewbox="0 0 300 400" class="w-full"><defs>
+          <lineargradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+           <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+          </lineargradient>
+         </defs> <rect width="300" height="400" fill="url(#bookGradient)" rx="8" /> <text x="150" y="180" text-anchor="middle" fill="white" font-size="32" font-weight="bold">
+          ZERO
+         </text> <text x="150" y="220" text-anchor="middle" fill="white" font-size="24">
+          TO
+         </text> <text x="150" y="260" text-anchor="middle" fill="white" font-size="32" font-weight="bold">
+          HERO
+         </text> <text x="150" y="300" text-anchor="middle" fill="white" font-size="28" font-weight="bold">
+          TECH
+         </text> <text x="150" y="360" text-anchor="middle" fill="white" font-size="16" opacity="0.9">
+          Eshwer Kingrani
+         </text>
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- About the Book -->
+  <section id="about" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-blue-50">
+   <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12 sm:mb-16">
+     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-gray-800">About the Book</h2>
+     <div class="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-6 sm:mb-8"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+     <div class="space-y-6">
+      <div class="glass-effect p-8 rounded-2xl">
+       <h3 class="text-2xl font-bold mb-4 text-purple-700">📚 Introduction</h3>
+       <p class="text-gray-700 leading-relaxed">Technology is changing our world faster than ever. From mobile phones to artificial intelligence, everything around us is becoming smart. But not everyone understands how it works or how to use it safely. That's why this book was written in very simple English so that anyone, even a beginner, can learn the real meaning of technology.</p>
+      </div>
+      <div class="glass-effect p-8 rounded-2xl">
+       <h3 class="text-2xl font-bold mb-4 text-purple-700">🎯 Who This Book Is For</h3>
+       <ul class="space-y-2 text-gray-700">
+        <li>• Students who want to learn technology easily</li>
+        <li>• Beginners who feel confused about AI and hacking</li>
+        <li>• Parents or teachers who want to understand the digital world</li>
+        <li>• Anyone who wants to become tech smart and future ready</li>
+       </ul>
+      </div>
+     </div>
+     <div class="space-y-6">
+      <div class="glass-effect p-8 rounded-2xl">
+       <h3 class="text-2xl font-bold mb-4 text-purple-700">🚀 The Goal</h3>
+       <p class="text-gray-700 leading-relaxed">To turn you from a technology user into a technology creator. From someone who only uses apps to someone who can understand, build, and protect them. This is not just a book about computers. It's about how you can grow in this digital age.</p>
+      </div>
+      <div class="glass-effect p-8 rounded-2xl">
+       <h3 class="text-2xl font-bold mb-4 text-purple-700">✨ What You'll Learn</h3>
+       <p class="text-gray-700 leading-relaxed">You don't need to be a genius or a computer expert. You just need curiosity and an open mind. This book takes you on a journey from learning what technology is, to exploring the power of Artificial Intelligence (AI), and finally, understanding the hidden world of cybersecurity and ethical hacking.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Chapters -->
+  <section class="py-20 px-6 bg-gray-50">
+   <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">What You'll Learn</h2>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       🖥️
+      </div>
+      <h3 class="font-bold text-lg mb-2">How Was Computer Made</h3>
+      <p class="text-gray-600">The history of computer</p>
+     </div>
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       ⚡
+      </div>
+      <h3 class="font-bold text-lg mb-2">How Code Work</h3>
+      <p class="text-gray-600">Logic of code</p>
+     </div>
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       🤖
+      </div>
+      <h3 class="font-bold text-lg mb-2">How AI Work</h3>
+      <p class="text-gray-600">How AI can change your life</p>
+     </div>
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       🛠️
+      </div>
+      <h3 class="font-bold text-lg mb-2">AI Tools</h3>
+      <p class="text-gray-600">How to use them</p>
+     </div>
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       🌟
+      </div>
+      <h3 class="font-bold text-lg mb-2">The Best Topic Ever</h3>
+      <p class="text-gray-600">Amazing insights and discoveries</p>
+     </div>
+     <div class="bg-white p-6 rounded-xl card-hover">
+      <div class="text-3xl mb-3">
+       ⚔️
+      </div>
+      <h3 class="font-bold text-lg mb-2">Inside the Cyber Battlefield</h3>
+      <p class="text-gray-600">Cybersecurity and digital warfare</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- About the Author -->
+  <section class="py-20 px-6 bg-white">
+   <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+     <h2 class="text-5xl font-bold mb-8 text-gray-800">Message from the Author</h2>
+     <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-8"></div>
+    </div>
+    <div class="premium-gradient p-12 rounded-3xl text-white relative overflow-hidden">
+     <div class="relative z-10">
+      <div class="text-center mb-8">
+       <div class="w-24 h-24 bg-white rounded-full mx-auto mb-6 flex items-center justify-center text-4xl">
+        👨‍💻
+       </div>
+       <h3 class="text-3xl font-bold mb-4">Hello Reader,</h3>
+      </div>
+      <div class="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
+       <p>My name is <strong>Eshwer Kingrani</strong>, and I wrote this book (my first book) to make technology simple for everyone. When I first started learning about computers, coding, and AI, I was confused - everything looked so hard and full of big words.</p>
+       <p>But when I understood it step by step, I realized one thing: <em>Technology is not difficult - it's just explained in a difficult way.</em></p>
+       <p>That's why I created <strong>"Zero to Hero Tech"</strong> - a book written in very simple English, for students, dreamers, and young minds who want to learn how technology really works.</p>
+       <p>This book is more than just information - it's a journey from being a user to becoming a creator. It will show you how to use AI, coding, and cybersecurity in the right way with purpose, creativity, and ethics.</p>
+       <div class="text-center my-8 p-6 glass-effect rounded-2xl">
+        <p class="text-2xl font-bold text-yellow-300">"AI should not replace your brain - it should extend it."</p>
+       </div>
+       <p class="text-center text-xl">So learn with curiosity, use technology wisely, and become the hero of your own digital world.</p>
+       <p class="text-center text-xl font-semibold">Thank you for reading, and welcome to the journey from <span class="text-yellow-300">Zero to Hero!</span></p>
+      </div>
+     </div>
+     <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
+     <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-24 -mb-24"></div>
+    </div>
+   </div>
+  </section><!-- Pricing Section -->
+  <section id="pricing" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-900 text-white">
+   <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center">Get Your Copy Today</h2>
+    <p class="text-center text-lg sm:text-xl mb-8 sm:mb-12 text-gray-300">Choose the format that works best for you</p><!-- Urgency Messages -->
+    <div class="max-w-2xl mx-auto mb-8 sm:mb-12 space-y-3">
+     <div class="bg-red-600 text-white px-4 sm:px-6 py-3 rounded-full text-center font-semibold pulse-animation text-sm sm:text-base">
+      🔥 <span id="urgency-text">More than 35 copies sold in the last 24 hours!</span>
+     </div>
+     <div class="bg-yellow-500 text-gray-900 px-4 sm:px-6 py-3 rounded-full text-center font-semibold text-sm sm:text-base">
+      ⚡ Buy now before going out of stock!
+     </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"><!-- Physical Copy -->
+     <div class="bg-white text-gray-800 rounded-2xl p-8 card-hover">
+      <div class="text-center mb-6">
+       <div class="text-5xl mb-4">
+        📦
+       </div>
+       <h3 class="text-2xl font-bold mb-2">Physical Copy</h3>
+       <p class="text-gray-600">Premium printed book delivered to your door</p>
+      </div>
+      <div class="text-center mb-6">
+       <div class="text-gray-400 line-through text-xl" id="physical-original">
+        Rs. 3500
+       </div>
+       <div class="text-5xl font-bold text-purple-700 mb-2" id="physical-discount">
+        Rs. 1500
+       </div>
+       <div class="text-green-600 font-semibold">
+        ✓ Free Delivery Included
+       </div>
+       <div class="text-red-600 font-semibold mt-2">
+        🎁 Random gift for first 20 buyers!
+       </div>
+      </div><button onclick="openPhysicalModal()" class="w-full bg-purple-700 text-white py-4 rounded-full font-bold text-lg hover:bg-purple-800 transition"> Buy Physical Copy </button>
+      <p class="text-center text-sm text-gray-500 mt-4">Secure your spot before discount ends!</p>
+     </div><!-- Digital Copy -->
+     <div class="bg-white text-gray-800 rounded-2xl p-8 card-hover">
+      <div class="text-center mb-6">
+       <div class="text-5xl mb-4">
+        📱
+       </div>
+       <h3 class="text-2xl font-bold mb-2">Digital Copy</h3>
+       <p class="text-gray-600">Instant download, read anywhere</p>
+      </div>
+      <div class="text-center mb-6">
+       <div class="text-gray-400 line-through text-xl" id="digital-original">
+        Rs. 1500
+       </div>
+       <div class="text-5xl font-bold text-purple-700 mb-2" id="digital-discount">
+        Rs. 250
+       </div>
+       <div class="text-green-600 font-semibold">
+        ✓ Instant Download Available
+       </div>
+       <div class="text-blue-600 font-semibold mt-2">
+        ⚡ Fast delivery &amp; instant access!
+       </div>
+      </div><button onclick="openDigitalModal()" class="w-full bg-purple-700 text-white py-4 rounded-full font-bold text-lg hover:bg-purple-800 transition"> Buy Digital Copy </button>
+      <p class="text-center text-sm text-gray-500 mt-4">Start reading in minutes!</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Physical Copy Modal -->
+  <div id="physicalModal" class="modal">
+   <div class="modal-content">
+    <div class="flex justify-between items-center mb-6">
+     <h3 class="text-2xl font-bold text-gray-800">Order Physical Copy</h3><button onclick="closePhysicalModal()" class="text-gray-500 hover:text-gray-700 text-3xl">×</button>
+    </div>
+    <form id="physicalForm" onsubmit="submitPhysicalOrder(event)">
+     <div class="space-y-4">
+      <div><label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label> <input type="text" id="fullName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+      <div><label for="city" class="block text-sm font-semibold text-gray-700 mb-2">City</label> <input type="text" id="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+      <div><label for="address" class="block text-sm font-semibold text-gray-700 mb-2">Full Address</label> <textarea id="address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+      </div>
+      <div><label for="postalCode" class="block text-sm font-semibold text-gray-700 mb-2">Postal Code</label> <input type="text" id="postalCode" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+      <div><label for="copies" class="block text-sm font-semibold text-gray-700 mb-2">Number of Copies</label> <input type="number" id="copies" min="1" value="1" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+     </div><button type="submit" class="w-full mt-6 bg-green-600 text-white py-4 rounded-full font-bold text-lg hover:bg-green-700 transition"> Order Now via WhatsApp </button>
+    </form>
+   </div>
+  </div><!-- Digital Copy Modal -->
+  <div id="digitalModal" class="modal">
+   <div class="modal-content">
+    <div class="flex justify-between items-center mb-6">
+     <h3 class="text-2xl font-bold text-gray-800">Order Digital Copy</h3><button onclick="closeDigitalModal()" class="text-gray-500 hover:text-gray-700 text-3xl">×</button>
+    </div>
+    <form id="digitalForm" onsubmit="submitDigitalOrder(event)">
+     <div class="space-y-4">
+      <div><label for="firstName" class="block text-sm font-semibold text-gray-700 mb-2">First Name</label> <input type="text" id="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+      <div><label for="lastName" class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label> <input type="text" id="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+      <div><label for="whatsapp" class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number</label> <input type="tel" id="whatsapp" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      </div>
+     </div><button type="submit" class="w-full mt-6 bg-green-600 text-white py-4 rounded-full font-bold text-lg hover:bg-green-700 transition"> Order Now via WhatsApp </button>
+    </form>
+   </div>
+  </div><!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 sm:py-8 px-4 sm:px-6">
+   <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-6 sm:mb-8">
+     <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Zero to Hero Tech</h3>
+     <div class="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4 sm:mb-6"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+     <div>
+      <h4 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-purple-400">Table of Contents</h4>
+      <ul class="space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-300">
+       <li>1. The Birth of Computers</li>
+       <li>2. The Logic of Code: Foundations of Computer Science</li>
+       <li>3. Rise of Artificial Intelligence and Machine Learning</li>
+       <li>4. AI Tools and Learn to Use</li>
+       <li>5. Inside the Cyber Battlefield</li>
+      </ul>
+     </div>
+     <div>
+      <h4 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-purple-400">Copyright Notice</h4>
+      <div class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+       <p class="mb-2"><strong>Copyright © 2025 by Eshwer Kingrani</strong></p>
+       <p class="mb-2">All rights reserved. No part of this publication may be reproduced, stored or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, scanning, or otherwise without written permission from the publisher.</p>
+       <p class="mb-2">It is illegal to copy this book, post it to a website, or distribute it by any other means without permission.</p>
+       <p class="mb-2">Eshwer Kingrani asserts the moral right to be identified as the author of this work.</p>
+       <p><strong>First Edition</strong></p>
+      </div>
+     </div>
+    </div>
+    <div class="text-center pt-4 sm:pt-6 border-t border-gray-700">
+     <p class="text-base sm:text-lg">© 2025 Zero to Hero Tech. All rights reserved.</p>
+     <p class="text-gray-400 mt-1 sm:mt-2 text-sm sm:text-base">Transform your future with technology</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+    const defaultConfig = {
+      book_title: "Zero to Hero Tech",
+      author_name: "by Eshwer Kingrani",
+      hero_subtitle: "Transform your tech knowledge from beginner to expert.",
+      about_text: "Technology is changing our world faster than ever. From mobile phones to artificial intelligence, everything around us is becoming smart. But not everyone understands how it works or how to use it safely. That's why this book was written in very simple English so that anyone, even a beginner, can learn the real meaning of technology.",
+      author_bio: "My name is Eshwer Kingrani, and I wrote this book (my first book) to make technology simple for everyone. When I first started learning about computers, coding, and AI, I was confused - everything looked so hard and full of big words. But when I understood it step by step, I realized one thing: Technology is not difficult - it's just explained in a difficult way.",
+      physical_original_price: "Rs. 3500",
+      physical_discount_price: "Rs. 1500",
+      digital_original_price: "Rs. 1500",
+      digital_discount_price: "Rs. 250",
+      urgency_text: "More than 35 copies sold in the last 24 hours!",
+      primary_color: "#1e1b4b",
+      secondary_color: "#8b5cf6",
+      text_color: "#1f2937",
+      background_color: "#f9fafb",
+      accent_color: "#10b981"
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('book-title').textContent = config.book_title || defaultConfig.book_title;
+      document.getElementById('author-name').textContent = config.author_name || defaultConfig.author_name;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('author-bio').textContent = config.author_bio || defaultConfig.author_bio;
+      document.getElementById('physical-original').textContent = config.physical_original_price || defaultConfig.physical_original_price;
+      document.getElementById('physical-discount').textContent = config.physical_discount_price || defaultConfig.physical_discount_price;
+      document.getElementById('digital-original').textContent = config.digital_original_price || defaultConfig.digital_original_price;
+      document.getElementById('digital-discount').textContent = config.digital_discount_price || defaultConfig.digital_discount_price;
+      document.getElementById('urgency-text').textContent = config.urgency_text || defaultConfig.urgency_text;
+
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+
+      document.querySelectorAll('.gradient-bg').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+      });
+
+      document.body.style.backgroundColor = backgroundColor;
+      
+      document.querySelectorAll('h1, h2, h3').forEach(el => {
+        if (!el.closest('.gradient-bg')) {
+          el.style.color = textColor;
+        }
+      });
+
+      document.querySelectorAll('button[class*="bg-purple"]').forEach(el => {
+        el.style.backgroundColor = primaryColor;
+      });
+
+      document.querySelectorAll('.text-purple-700').forEach(el => {
+        el.style.color = primaryColor;
+      });
+
+      document.querySelectorAll('.text-green-600, .bg-green-600').forEach(el => {
+        if (el.tagName === 'BUTTON') {
+          el.style.backgroundColor = accentColor;
+        } else {
+          el.style.color = accentColor;
+        }
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["book_title", config.book_title || defaultConfig.book_title],
+        ["author_name", config.author_name || defaultConfig.author_name],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["author_bio", config.author_bio || defaultConfig.author_bio],
+        ["physical_original_price", config.physical_original_price || defaultConfig.physical_original_price],
+        ["physical_discount_price", config.physical_discount_price || defaultConfig.physical_discount_price],
+        ["digital_original_price", config.digital_original_price || defaultConfig.digital_original_price],
+        ["digital_discount_price", config.digital_discount_price || defaultConfig.digital_discount_price],
+        ["urgency_text", config.urgency_text || defaultConfig.urgency_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    function openPhysicalModal() {
+      document.getElementById('physicalModal').classList.add('active');
+    }
+
+    function closePhysicalModal() {
+      document.getElementById('physicalModal').classList.remove('active');
+    }
+
+    function openDigitalModal() {
+      document.getElementById('digitalModal').classList.add('active');
+    }
+
+    function closeDigitalModal() {
+      document.getElementById('digitalModal').classList.remove('active');
+    }
+
+    function submitPhysicalOrder(event) {
+      event.preventDefault();
+      
+      const fullName = document.getElementById('fullName').value;
+      const city = document.getElementById('city').value;
+      const address = document.getElementById('address').value;
+      const postalCode = document.getElementById('postalCode').value;
+      const copies = document.getElementById('copies').value;
+      
+      const message = `Hello! I want to order the Physical Copy of "Zero to Hero Tech" book.
+
+📋 ORDER DETAILS:
+• Book: Zero to Hero Tech (Physical Copy)
+• Price: Rs. 1500 per copy
+• Quantity: ${copies} ${copies > 1 ? 'copies' : 'copy'}
+• Total Amount: Rs. ${1500 * copies}
+
+👤 CUSTOMER INFORMATION:
+• Name: ${fullName}
+• City: ${city}
+• Address: ${address}
+• Postal Code: ${postalCode}
+
+Please confirm my order and provide payment details. Thank you!`;
+
+      const whatsappUrl = `https://wa.me/923087678391?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      closePhysicalModal();
+    }
+
+    function submitDigitalOrder(event) {
+      event.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      
+      const message = `Hello! I want to order the Digital Copy of "Zero to Hero Tech" book.
+
+📋 ORDER DETAILS:
+• Book: Zero to Hero Tech (Digital Copy)
+• Price: Rs. 250
+• Format: PDF/Digital Download
+
+👤 CUSTOMER INFORMATION:
+• Name: ${firstName} ${lastName}
+• WhatsApp Number: ${whatsapp}
+
+Please confirm my order and provide payment details for instant download. Thank you!`;
+
+      const whatsappUrl = `https://wa.me/923087678381?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      closeDigitalModal();
+    }
+
+    window.onclick = function(event) {
+      const physicalModal = document.getElementById('physicalModal');
+      const digitalModal = document.getElementById('digitalModal');
+      if (event.target === physicalModal) {
+        closePhysicalModal();
+      }
+      if (event.target === digitalModal) {
+        closeDigitalModal();
+      }
+    };
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99aabda12247d051',t:'MTc2MjQ5NjU5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
