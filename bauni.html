@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise For You! 🎁</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;family=Dancing+Script:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .cursive {
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes slideOut {
+      to {
+        transform: translateX(200%) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    @keyframes wheelSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(1800deg); }
+    }
+    
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-pulse-custom {
+      animation: pulse 2s infinite;
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-spin-slow {
+      animation: spin 3s linear infinite;
+    }
+    
+    .animate-slideOut {
+      animation: slideOut 1s ease-in forwards;
+    }
+    
+    .animate-shake {
+      animation: shake 0.5s ease-in-out;
+    }
+    
+    .animate-wheel {
+      animation: wheelSpin 4s cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+    }
+    
+    .screen {
+      display: none;
+      opacity: 0;
+    }
+    
+    .screen.active {
+      display: flex;
+      opacity: 1;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+    
+    .gradient-bg-2 {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    }
+    
+    .gradient-bg-3 {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    }
+    
+    .option-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .option-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    
+    .wheel-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+    
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    }
+    
+    .wheel-segment {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      left: 50%;
+      top: 0;
+      transform-origin: 0% 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .wheel-pointer {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 40px solid #ff4757;
+      z-index: 10;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    
+    .emoji-rain {
+      position: fixed;
+      font-size: 30px;
+      animation: confetti 2s ease-out forwards;
+      pointer-events: none;
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: float 2s ease-in-out infinite;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full overflow-auto"><!-- Screen 1: Intro -->
+   <div id="screen1" class="screen active gradient-bg min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="text-center">
+     <h1 id="introText" class="cursive text-6xl md:text-8xl text-white animate-pulse-custom drop-shadow-lg">This is for u</h1>
+     <div class="mt-8 text-6xl animate-float">
+      💝
+     </div>
+    </div>
+   </div><!-- Screen 2: Go Ahead Animation -->
+   <div id="screen2" class="screen gradient-bg-2 min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="text-center relative">
+     <div id="flyingEmojis" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+     <h1 class="text-5xl md:text-7xl font-bold text-purple-700 mb-6">Go Ahead! 🚀</h1>
+     <div class="flex gap-4 justify-center text-5xl"><span class="animate-spin-slow">🎡</span> <span class="animate-float" style="animation-delay: 0.2s;">✨</span> <span class="animate-spin-slow" style="animation-delay: 0.4s;">🎪</span> <span class="animate-float" style="animation-delay: 0.6s;">🌟</span> <span class="animate-spin-slow" style="animation-delay: 0.8s;">🎠</span>
+     </div>
+    </div>
+   </div><!-- Screen 3: Name Input -->
+   <div id="screen3" class="screen gradient-bg-3 min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-md w-full text-center">
+     <div class="text-6xl mb-6">
+      🤔
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Who are you?</h2>
+     <p class="text-gray-600 mb-6">Write your name below</p><input type="text" id="nameInput" placeholder="Enter your name..." class="w-full px-6 py-4 text-xl border-3 border-purple-300 rounded-2xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-200 transition-all"> <label for="nameInput" class="sr-only">Your Name</label> <button id="nameSubmit" class="mt-6 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold py-4 rounded-2xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"> Next → </button>
+    </div>
+   </div><!-- Screen 4: Quiz Question -->
+   <div id="screen4" class="screen gradient-bg min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-lg w-full text-center">
+     <div class="text-6xl mb-6">
+      🎯
+     </div>
+     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Hey <span id="userName" class="text-purple-600"></span>!</h2>
+     <p class="text-xl text-gray-600 mb-8">What does the sender call you?</p>
+     <div class="space-y-4" id="optionsContainer"><button class="option-btn w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg" data-option="legend"> 1. Legend 👑 </button> <button class="option-btn w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg" data-option="larkii"> 2. Larkii 👧 </button> <button class="option-btn w-full bg-gradient-to-r from-green-400 to-green-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg" data-option="bauni"> 3. Bauni 🤏 </button> <button class="option-btn w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg" data-option="dontknow"> 4. Don't Know 🤷 </button>
+     </div>
+     <div id="feedback" class="mt-6 p-4 rounded-2xl hidden">
+      <p class="text-xl font-bold"></p>
+     </div>
+    </div>
+   </div><!-- Screen 5: Spin Wheel -->
+   <div id="screen5" class="screen gradient-bg-2 min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="text-center">
+     <h2 class="text-3xl md:text-4xl font-bold text-purple-700 mb-8">🎉 Correct! Spin to Win! 🎉</h2>
+     <div class="wheel-container mx-auto mb-8">
+      <div class="wheel-pointer"></div>
+      <div id="wheel" class="wheel">
+       <svg viewbox="0 0 200 200" class="w-full h-full"><defs>
+         <clippath id="segment1">
+          <path d="M100,100 L100,0 A100,100 0 0,1 173.2,50 Z" />
+         </clippath>
+         <clippath id="segment2">
+          <path d="M100,100 L173.2,50 A100,100 0 0,1 173.2,150 Z" />
+         </clippath>
+         <clippath id="segment3">
+          <path d="M100,100 L173.2,150 A100,100 0 0,1 100,200 Z" />
+         </clippath>
+         <clippath id="segment4">
+          <path d="M100,100 L100,200 A100,100 0 0,1 26.8,150 Z" />
+         </clippath>
+         <clippath id="segment5">
+          <path d="M100,100 L26.8,150 A100,100 0 0,1 26.8,50 Z" />
+         </clippath>
+        </defs> <rect x="0" y="0" width="200" height="200" fill="#ff6b6b" clip-path="url(#segment1)" /> <rect x="0" y="0" width="200" height="200" fill="#4ecdc4" clip-path="url(#segment2)" /> <rect x="0" y="0" width="200" height="200" fill="#ffe66d" clip-path="url(#segment3)" /> <rect x="0" y="0" width="200" height="200" fill="#95e1d3" clip-path="url(#segment4)" /> <rect x="0" y="0" width="200" height="200" fill="#a29bfe" clip-path="url(#segment5)" /> <text x="130" y="45" font-size="20" text-anchor="middle" fill="white">
+         🔐
+        </text> <text x="160" y="100" font-size="20" text-anchor="middle" fill="white">
+         🔑
+        </text> <text x="130" y="165" font-size="20" text-anchor="middle" fill="white">
+         💰
+        </text> <text x="60" y="165" font-size="20" text-anchor="middle" fill="white">
+         ✨
+        </text> <text x="40" y="80" font-size="20" text-anchor="middle" fill="white">
+         🔄
+        </text> <circle cx="100" cy="100" r="20" fill="#764ba2" /> <text x="100" y="106" font-size="14" text-anchor="middle" fill="white">
+         🎁
+        </text>
+       </svg>
+      </div>
+     </div><button id="spinBtn" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-2xl font-bold py-4 px-12 rounded-full hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-110 shadow-xl"> 🎰 SPIN NOW! 🎰 </button>
+     <div id="prizeReveal" class="hidden mt-8">
+      <p class="text-2xl font-bold text-purple-700 mb-4">🎊 You Won: <span id="prizeText" class="text-3xl">🚗 CAR!</span> 🎊</p><button id="availGift" class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xl font-bold py-4 px-8 rounded-full hover:from-green-500 hover:to-green-700 transition-all transform hover:scale-105 shadow-xl"> 🎁 Avail Gift 🎁 </button>
+     </div>
+    </div>
+   </div><!-- Screen 6: Permission -->
+   <div id="screen6" class="screen gradient-bg min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-md w-full text-center">
+     <div class="text-6xl mb-6">
+      🔐
+     </div>
+     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Permission Required!</h2>
+     <p class="text-gray-600 mb-8">To claim your gift, please confirm:</p><button id="confirmBtn" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-bold py-4 rounded-2xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"> Yes, I am Bauni! 😅 hahahaha </button>
+    </div>
+   </div><!-- Screen 7: Gift on the way -->
+   <div id="screen7" class="screen gradient-bg-3 min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="text-center">
+     <div class="text-8xl mb-6 animate-float">
+      🚚
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold text-purple-700 mb-6">Gift is on the way!</h2>
+     <div class="bg-white rounded-2xl p-6 shadow-xl max-w-md mx-auto">
+      <p class="text-gray-600 mb-2">📍 Delivering to:</p>
+      <p class="text-xl font-bold text-gray-800">Madina Luxury Apartment</p>
+      <p class="text-lg text-gray-700">D Street, DHA Phase 5</p>
+     </div>
+     <div class="mt-8 flex justify-center gap-4 text-4xl"><span class="animate-float">🎁</span> <span class="animate-float" style="animation-delay: 0.3s;">✨</span> <span class="animate-float" style="animation-delay: 0.6s;">🎉</span>
+     </div>
+    </div>
+   </div><!-- Screen 8: Prank Reveal -->
+   <div id="screen8" class="screen gradient-bg-2 min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-lg w-full text-center">
+     <div class="text-6xl mb-6">
+      😬
+     </div>
+     <h2 class="text-2xl md:text-3xl font-bold text-red-500 mb-6">Sorry!</h2>
+     <p class="text-xl text-gray-700 mb-4">This gift is either for a <span class="font-bold text-pink-500">cute girl</span></p>
+     <p class="text-xl text-gray-700 mb-6">or for a <span class="font-bold text-purple-500">taller girl</span></p>
+     <p class="text-2xl font-bold text-gray-800">You are not cute...</p>
+     <p class="text-2xl font-bold text-orange-500 mt-2">and also you are BAUNIIII! 🤏</p>
+     <div class="mt-6 text-4xl">
+      😂😂😂
+     </div>
+    </div>
+   </div><!-- Screen 9: Final Prank -->
+   <div id="screen9" class="screen gradient-bg min-h-full w-full flex-col items-center justify-center p-8">
+    <div class="text-center">
+     <div class="text-8xl mb-6">
+      🤣
+     </div>
+     <h1 class="cursive text-4xl md:text-6xl text-white mb-6">Kesa laga mera mazak?</h1>
+     <p class="text-3xl md:text-5xl text-yellow-300 font-bold">HAHAHAHA!</p>
+     <div class="mt-8 flex justify-center gap-3 text-5xl flex-wrap"><span>😂</span><span>🤣</span><span>😜</span><span>😝</span><span>🤪</span>
+     </div>
+     <p class="mt-8 text-white text-xl opacity-80">Made with 💕 just to tease you!</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      intro_text: "This is for u",
+      correct_answer: "bauni"
+    };
+    
+    let config = { ...defaultConfig };
+    let userName = "";
+    const prizes = ["🔐 My Instagram Password!", "🔑 My Facebook Password!", "💰 10k Cash!", "✨ Whatever You Want!", "🔄 Try Again!"];
+    
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const screen = document.getElementById(screenId);
+      if (screen) {
+        screen.classList.add('active');
+      }
+    }
+    
+    function createEmojiRain() {
+      const emojis = ['🎉', '✨', '🌟', '💫', '🎊', '🎈', '💝', '🌈'];
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const emoji = document.createElement('div');
+          emoji.className = 'emoji-rain';
+          emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          emoji.style.left = Math.random() * 100 + '%';
+          emoji.style.top = '-50px';
+          document.body.appendChild(emoji);
+          setTimeout(() => emoji.remove(), 2000);
+        }, i * 100);
+      }
+    }
+    
+    // Screen 1 -> Screen 2 (after 2 seconds)
+    setTimeout(() => {
+      showScreen('screen2');
+      createEmojiRain();
+      
+      // Screen 2 -> Screen 3 (after 3 seconds)
+      setTimeout(() => {
+        showScreen('screen3');
+      }, 3000);
+    }, 2000);
+    
+    // Name submit
+    document.getElementById('nameSubmit').addEventListener('click', function(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('nameInput');
+      userName = nameInput.value.trim() || "Friend";
+      document.getElementById('userName').textContent = userName;
+      showScreen('screen4');
+    });
+    
+    // Quiz options
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const option = this.getAttribute('data-option');
+        const feedback = document.getElementById('feedback');
+        const correctAnswer = config.correct_answer || defaultConfig.correct_answer;
+        
+        if (option === correctAnswer) {
+          feedback.className = 'mt-6 p-4 rounded-2xl bg-green-100';
+          feedback.innerHTML = '<p class="text-xl font-bold text-green-600">✅ Correct! You know yourself well! 😄</p>';
+          feedback.classList.remove('hidden');
+          createEmojiRain();
+          
+          setTimeout(() => {
+            showScreen('screen5');
+          }, 1500);
+        } else {
+          feedback.className = 'mt-6 p-4 rounded-2xl bg-red-100 animate-shake';
+          feedback.innerHTML = '<p class="text-xl font-bold text-red-600">❌ Wrong answer! Please try again! 🙈</p>';
+          feedback.classList.remove('hidden');
+          
+          setTimeout(() => {
+            feedback.classList.add('hidden');
+          }, 2000);
+        }
+      });
+    });
+    
+    // Spin wheel
+    function spinWheel() {
+      const wheel = document.getElementById('wheel');
+      const btn = document.getElementById('spinBtn');
+      btn.disabled = true;
+      btn.textContent = '🎰 Spinning... 🎰';
+      
+      // Remove previous animation
+      wheel.classList.remove('animate-wheel');
+      void wheel.offsetWidth; // Force reflow
+      wheel.classList.add('animate-wheel');
+      
+      setTimeout(() => {
+        const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+        document.getElementById('prizeText').textContent = randomPrize;
+        document.getElementById('prizeReveal').classList.remove('hidden');
+        
+        // Show respin button if "Try Again!" prize
+        if (randomPrize === "🔄 Try Again!") {
+          btn.disabled = false;
+          btn.textContent = '🎰 SPIN AGAIN! 🎰';
+          btn.classList.remove('hidden');
+        } else {
+          btn.classList.add('hidden');
+        }
+        
+        createEmojiRain();
+      }, 4000);
+    }
+    
+    document.getElementById('spinBtn').addEventListener('click', spinWheel);
+    
+    // Avail gift
+    document.getElementById('availGift').addEventListener('click', function() {
+      showScreen('screen6');
+    });
+    
+    // Confirm bauni
+    document.getElementById('confirmBtn').addEventListener('click', function() {
+      showScreen('screen7');
+      createEmojiRain();
+      
+      setTimeout(() => {
+        showScreen('screen8');
+      }, 4000);
+    });
+    
+    // Screen 8 -> Screen 9
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.target.id === 'screen8' && mutation.target.classList.contains('active')) {
+          setTimeout(() => {
+            showScreen('screen9');
+            createEmojiRain();
+          }, 8000);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.screen').forEach(screen => {
+      observer.observe(screen, { attributes: true, attributeFilter: ['class'] });
+    });
+    
+    // Element SDK integration
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      
+      const introText = document.getElementById('introText');
+      if (introText) {
+        introText.textContent = config.intro_text || defaultConfig.intro_text;
+      }
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["intro_text", config.intro_text || defaultConfig.intro_text],
+        ["correct_answer", config.correct_answer || defaultConfig.correct_answer]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3fef3da62ec972',t:'MTc2OTQyOTcxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
